@@ -1,0 +1,10 @@
+“Ma’am, our current model is trained on the PlantVillage dataset, which contains around 15 classes from three major crops — tomato, potato, and pepper.
+However, the system is designed in a modular way, so we can easily extend it to other crops like cotton, maize, or rice by collecting and labeling new images and retraining the model.
+This will make it a scalable AI platform for plant disease detection — not limited to just one crop".
+
+“We selected tomato, potato, and pepper because these crops are commonly used in the PlantVillage dataset — which is publicly available, high-quality, and verified.
+This allowed us to train a model with good accuracy while focusing on building the full AI pipeline, not just data collection.”
+
+“Ma’am, right now our model is trained only on three plants — Tomato, Potato, and Pepper — because those were available in the PlantVillage dataset.
+But we can easily add Cotton in the future. We just need to collect images of healthy and diseased cotton leaves, like ‘Cotton_healthy’ and ‘Cotton_bacterial_blight’, put them in new folders inside our dataset, and train the same model again.
+The model will then learn to detect Cotton diseases too — we don’t have to build it again from scratch, just fine-tune the top layers. That’s called transfer learning.”

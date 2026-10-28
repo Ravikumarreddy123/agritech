@@ -1,0 +1,437 @@
+{
+  "Pepper Bell Bacterial Spot": {
+    "en": {
+      "crop": "Bell Pepper",
+      "symptoms": "Small, water-soaked spots on leaves that turn brown or black. Fruit may show raised scab-like spots.",
+      "cause": "Caused by Xanthomonas campestris pv. vesicatoria bacteria, favored by warm, wet weather.",
+      "treatment": "Apply copper-based bactericides early in the disease cycle. Remove severely infected plants.",
+      "prevention": "Use certified disease-free seed. Avoid overhead watering to keep foliage dry. Rotate crops.",
+      "risk_factors": ["Warm temperatures (24-30°C)", "High humidity", "Frequent rainfall"],
+      "safety": "Use only products approved for the crop and disease in your region. Follow the product label or local agricultural guidance."
+    },
+    "hi": {
+      "crop": "शिमला मिर्च",
+      "symptoms": "पत्तियों पर छोटे, पानी से भरे धब्बे जो भूरे या काले हो जाते हैं। फलों पर पपड़ी जैसे धब्बे दिख सकते हैं।",
+      "cause": "Xanthomonas जीवाणु के कारण होता है, जो गर्म, नम मौसम में पनपता है।",
+      "treatment": "रोग के शुरुआती चरण में कॉपर आधारित कीटनाशकों का प्रयोग करें। अत्यधिक संक्रमित पौधों को हटा दें।",
+      "prevention": "प्रमाणित रोग-मुक्त बीजों का उपयोग करें। पत्तियों को सूखा रखने के लिए ऊपर से सिंचाई न करें। फसल चक्र अपनाएं।",
+      "risk_factors": ["गर्म तापमान (24-30°C)", "उच्च आर्द्रता", "बार-बार बारिश"],
+      "safety": "केवल आपके क्षेत्र में फसल और रोग के लिए अनुमोदित उत्पादों का उपयोग करें। उत्पाद लेबल या स्थानीय कृषि मार्गदर्शन का पालन करें।"
+    },
+    "te": {
+      "crop": "క్యాప్సికమ్",
+      "symptoms": "ఆకులపై చిన్న, నీటితో నిండిన మచ్చలు గోధుమ లేదా నలుపు రంగులోకి మారుతాయి. పండ్లపై బొబ్బలు వంటి మచ్చలు కనిపించవచ్చు.",
+      "cause": "జాంతోమోనాస్ బ్యాక్టీరియా వల్ల వస్తుంది, ఇది వెచ్చని, తడి వాతావరణంలో పెరుగుతుంది.",
+      "treatment": "వ్యాధి ప్రారంభ దశలో రాగి ఆధారిత మందులను వాడండి. తీవ్రంగా సోకిన మొక్కలను తొలగించండి.",
+      "prevention": "వ్యాధి లేని ధృవీకరించబడిన విత్తనాలను ఉపయోగించండి. ఆకులు పొడిగా ఉండటానికి పైనుంచి నీరు పోయకండి. పంట మార్పిడి చేయండి.",
+      "risk_factors": ["వెచ్చని ఉష్ణోగ్రతలు (24-30°C)", "అధిక తేమ", "తరచుగా వర్షం"],
+      "safety": "మీ ప్రాంతంలో పంట మరియు వ్యాధికి ఆమోదించబడిన ఉత్పత్తులను మాత్రమే ఉపయోగించండి. ఉత్పత్తి లేబుల్ లేదా స్థానిక వ్యవసాయ మార్గదర్శకాలను అనుసరించండి."
+    }
+  },
+  "Pepper Bell Healthy": {
+    "en": {
+      "crop": "Bell Pepper",
+      "symptoms": "No symptoms detected. Plant appears healthy.",
+      "cause": "N/A",
+      "treatment": "No treatment needed.",
+      "prevention": "Continue regular care: proper watering, adequate sunlight, regular monitoring.",
+      "risk_factors": ["Overwatering", "Poor soil drainage", "Insufficient sunlight"],
+      "safety": "Maintain safe agricultural practices."
+    },
+    "hi": {
+      "crop": "शिमला मिर्च",
+      "symptoms": "कोई लक्षण नहीं मिला। पौधा स्वस्थ दिखता है।",
+      "cause": "लागू नहीं",
+      "treatment": "किसी उपचार की आवश्यकता नहीं है।",
+      "prevention": "नियमित देखभाल जारी रखें: उचित पानी, पर्याप्त धूप, नियमित निगरानी।",
+      "risk_factors": ["अधिक पानी देना", "मिट्टी में खराब जल निकासी", "अपर्याप्त धूप"],
+      "safety": "सुरक्षित कृषि पद्धतियों को बनाए रखें।"
+    },
+    "te": {
+      "crop": "క్యాప్సికమ్",
+      "symptoms": "ఎటువంటి లక్షణాలు లేవు. మొక్క ఆరోగ్యంగా కనిపిస్తోంది.",
+      "cause": "వర్తించదు",
+      "treatment": "ఎటువంటి చికిత్స అవసరం లేదు.",
+      "prevention": "సరైన నీరు, తగినంత సూర్యరశ్మి, క్రమం తప్పకుండా పర్యవేక్షించడం కొనసాగించండి.",
+      "risk_factors": ["ఎక్కువ నీరు పెట్టడం", "నీరు నిలిచిపోవడం", "తగినంత సూర్యరశ్మి లేకపోవడం"],
+      "safety": "సురక్షితమైన వ్యవసాయ పద్ధతులను పాటించండి."
+    }
+  },
+  "Potato Early Blight": {
+    "en": {
+      "crop": "Potato",
+      "symptoms": "Brown to black spots with concentric rings on older leaves. Leaves may turn yellow and drop.",
+      "cause": "Caused by Alternaria solani fungus, thriving in warm temperatures and alternating wet/dry conditions.",
+      "treatment": "Apply appropriate fungicides when first symptoms appear. Remove heavily infected leaves.",
+      "prevention": "Rotate crops and remove volunteer potato plants. Maintain proper plant nutrition and avoid overhead irrigation.",
+      "risk_factors": ["Warm temperatures", "Alternating wet and dry periods", "Poor plant nutrition"],
+      "safety": "Use only products approved for the crop and disease in your region. Follow the product label or local agricultural guidance."
+    },
+    "hi": {
+      "crop": "आलू",
+      "symptoms": "पुरानी पत्तियों पर गाढ़े भूरे या काले रंग के छल्लेदार धब्बे। पत्तियां पीली होकर गिर सकती हैं।",
+      "cause": "अल्टरनेरिया सोलानी कवक के कारण होता है, जो गर्म तापमान और गीले/सूखे मौसम में पनपता है।",
+      "treatment": "लक्षण दिखने पर उचित फफूंदनाशक का प्रयोग करें। अत्यधिक संक्रमित पत्तियों को हटा दें।",
+      "prevention": "फसल चक्र अपनाएं। पौधे को उचित पोषण दें और पत्तियों पर ऊपर से पानी डालने से बचें।",
+      "risk_factors": ["गर्म तापमान", "बार-बार गीला और सूखा मौसम", "खराब पोषण"],
+      "safety": "केवल आपके क्षेत्र में फसल और रोग के लिए अनुमोदित उत्पादों का उपयोग करें। उत्पाद लेबल या स्थानीय कृषि मार्गदर्शन का पालन करें।"
+    },
+    "te": {
+      "crop": "బంగాళదుంప",
+      "symptoms": "ముదురు ఆకులపై వృత్తాకార వలయాలతో గోధుమ నుండి నలుపు మచ్చలు. ఆకులు పసుపు రంగులోకి మారి రాలిపోవచ్చు.",
+      "cause": "ఆల్టర్నేరియా సోలాని ఫంగస్ వల్ల వస్తుంది, వెచ్చని వాతావరణం మరియు మారుతున్న తడి/పొడి పరిస్థితులలో పెరుగుతుంది.",
+      "treatment": "లక్షణాలు కనిపించిన వెంటనే తగిన శిలీంద్ర సంహారిణులను వాడండి. తీవ్రంగా సోకిన ఆకులను తొలగించండి.",
+      "prevention": "పంట మార్పిడి చేయండి. సరైన పోషణను నిర్వహించండి మరియు పైనుంచి నీరు పోయకండి.",
+      "risk_factors": ["వెచ్చని వాతావరణం", "మారుతున్న తడి, పొడి పరిస్థితులు", "పోషకాహార లోపం"],
+      "safety": "మీ ప్రాంతంలో పంట మరియు వ్యాధికి ఆమోదించబడిన ఉత్పత్తులను మాత్రమే ఉపయోగించండి. ఉత్పత్తి లేబుల్ లేదా స్థానిక వ్యవసాయ మార్గదర్శకాలను అనుసరించండి."
+    }
+  },
+  "Potato Late Blight": {
+    "en": {
+      "crop": "Potato",
+      "symptoms": "Dark, water-soaked lesions on leaves and stems. White fluffy mold on undersides of leaves during wet weather.",
+      "cause": "Caused by the oomycete Phytophthora infestans, thriving in cool, wet, and humid conditions.",
+      "treatment": "Apply protective fungicides. Destroy infected plant material immediately to stop the spread.",
+      "prevention": "Use certified disease-free seed tubers. Eliminate cull piles and volunteer potatoes.",
+      "risk_factors": ["High humidity (>85%)", "Cool temperatures (10-20°C)", "Prolonged leaf wetness"],
+      "safety": "Use only products approved for the crop and disease in your region. Follow the product label or local agricultural guidance."
+    },
+    "hi": {
+      "crop": "आलू",
+      "symptoms": "पत्तियों और तनों पर गहरे, पानी से भरे धब्बे। गीले मौसम में पत्तियों के नीचे सफेद फफूंद।",
+      "cause": "फाइटोफ्थोरा इन्फेस्टन्स के कारण होता है, जो ठंडे, नम और आर्द्र मौसम में तेजी से फैलता है।",
+      "treatment": "सुरक्षात्मक फफूंदनाशक लगाएं। फैलाव रोकने के लिए संक्रमित पौधों को तुरंत नष्ट कर दें।",
+      "prevention": "प्रमाणित रोग-मुक्त बीज का उपयोग करें। खेत के आसपास बेकार आलू न रखें।",
+      "risk_factors": ["उच्च आर्द्रता (>85%)", "ठंडा तापमान (10-20°C)", "लंबे समय तक पत्तियों का गीला रहना"],
+      "safety": "केवल आपके क्षेत्र में फसल और रोग के लिए अनुमोदित उत्पादों का उपयोग करें। उत्पाद लेबल या स्थानीय कृषि मार्गदर्शन का पालन करें।"
+    },
+    "te": {
+      "crop": "బంగాళదుంప",
+      "symptoms": "ఆకులు మరియు కాండం మీద ముదురు రంగులో నీటితో నిండిన మచ్చలు. తడి వాతావరణంలో ఆకుల క్రింద తెల్లటి బూజు.",
+      "cause": "ఫైటోఫ్తోరా ఇన్ఫెస్టాన్స్ వల్ల వస్తుంది, చల్లని, తడి మరియు తేమ పరిస్థితులలో ఇది వేగంగా పెరుగుతుంది.",
+      "treatment": "రక్షిత శిలీంద్ర సంహారిణులను పిచికారీ చేయండి. వ్యాధి వ్యాప్తిని అరికట్టడానికి సోకిన మొక్కల భాగాలను వెంటనే నాశనం చేయండి.",
+      "prevention": "వ్యాధి లేని విత్తన దుంపలను ఉపయోగించండి. పొలం చుట్టూ పాడైన బంగాళదుంపలను వదిలివేయకండి.",
+      "risk_factors": ["అధిక తేమ (>85%)", "చల్లని ఉష్ణోగ్రతలు (10-20°C)", "ఎక్కువ సేపు ఆకులు తడిగా ఉండటం"],
+      "safety": "మీ ప్రాంతంలో పంట మరియు వ్యాధికి ఆమోదించబడిన ఉత్పత్తులను మాత్రమే ఉపయోగించండి. ఉత్పత్తి లేబుల్ లేదా స్థానిక వ్యవసాయ మార్గదర్శకాలను అనుసరించండి."
+    }
+  },
+  "Potato Healthy": {
+    "en": {
+      "crop": "Potato",
+      "symptoms": "No symptoms detected. Plant appears healthy.",
+      "cause": "N/A",
+      "treatment": "No treatment needed.",
+      "prevention": "Continue regular care: proper watering, adequate sunlight, regular monitoring.",
+      "risk_factors": ["Overwatering", "Poor soil drainage", "Insufficient sunlight"],
+      "safety": "Maintain safe agricultural practices."
+    },
+    "hi": {
+      "crop": "आलू",
+      "symptoms": "कोई लक्षण नहीं मिला। पौधा स्वस्थ दिखता है।",
+      "cause": "लागू नहीं",
+      "treatment": "किसी उपचार की आवश्यकता नहीं है।",
+      "prevention": "नियमित देखभाल जारी रखें: उचित पानी, पर्याप्त धूप, नियमित निगरानी।",
+      "risk_factors": ["अधिक पानी देना", "मिट्टी में खराब जल निकासी", "अपर्याप्त धूप"],
+      "safety": "सुरक्षित कृषि पद्धतियों को बनाए रखें।"
+    },
+    "te": {
+      "crop": "బంగాళదుంప",
+      "symptoms": "ఎటువంటి లక్షణాలు లేవు. మొక్క ఆరోగ్యంగా కనిపిస్తోంది.",
+      "cause": "వర్తించదు",
+      "treatment": "ఎటువంటి చికిత్స అవసరం లేదు.",
+      "prevention": "సరైన నీరు, తగినంత సూర్యరశ్మి, క్రమం తప్పకుండా పర్యవేక్షించడం కొనసాగించండి.",
+      "risk_factors": ["ఎక్కువ నీరు పెట్టడం", "నీరు నిలిచిపోవడం", "తగినంత సూర్యరశ్మి లేకపోవడం"],
+      "safety": "సురక్షితమైన వ్యవసాయ పద్ధతులను పాటించండి."
+    }
+  },
+  "Tomato Bacterial Spot": {
+    "en": {
+      "crop": "Tomato",
+      "symptoms": "Small, dark, water-soaked spots on leaves that may turn yellow and drop. Scab-like spots on fruits.",
+      "cause": "Xanthomonas bacteria, spreading rapidly in warm, humid, and rainy weather.",
+      "treatment": "Apply copper-based sprays early. Once established, the disease is difficult to control.",
+      "prevention": "Use disease-free seeds and resistant varieties. Avoid overhead watering.",
+      "risk_factors": ["Warm weather", "High humidity", "Overhead irrigation"],
+      "safety": "Use only products approved for the crop and disease in your region. Follow the product label or local agricultural guidance."
+    },
+    "hi": {
+      "crop": "टमाटर",
+      "symptoms": "पत्तियों पर छोटे, गहरे रंग के धब्बे जो पीले होकर गिर सकते हैं। फलों पर पपड़ी जैसे धब्बे।",
+      "cause": "Xanthomonas जीवाणु, जो गर्म, नम और बरसात के मौसम में तेजी से फैलता है।",
+      "treatment": "शुरुआत में कॉपर आधारित स्प्रे करें। एक बार फैलने के बाद इसे नियंत्रित करना मुश्किल है।",
+      "prevention": "रोग-मुक्त बीज और प्रतिरोधी किस्मों का उपयोग करें। ऊपर से पानी डालने से बचें।",
+      "risk_factors": ["गर्म मौसम", "उच्च आर्द्रता", "ऊपर से सिंचाई"],
+      "safety": "केवल आपके क्षेत्र में फसल और रोग के लिए अनुमोदित उत्पादों का उपयोग करें। उत्पाद लेबल या स्थानीय कृषि मार्गदर्शन का पालन करें।"
+    },
+    "te": {
+      "crop": "టొమాటో",
+      "symptoms": "ఆకులపై చిన్న, ముదురు రంగు మచ్చలు పసుపు రంగులోకి మారి రాలిపోతాయి. పండ్లపై బొబ్బలు.",
+      "cause": "జాంతోమోనాస్ బ్యాక్టీరియా, ఇది వెచ్చని, తేమ మరియు వర్షపు వాతావరణంలో వేగంగా వ్యాపిస్తుంది.",
+      "treatment": "ముందుగా రాగి ఆధారిత మందులను వాడండి. ఒకసారి ప్రబలినాక నియంత్రించడం కష్టం.",
+      "prevention": "వ్యాధి లేని విత్తనాలను వాడండి. ఆకులపై నీరు పోయకండి.",
+      "risk_factors": ["వెచ్చని వాతావరణం", "అధిక తేమ", "పైనుంచి నీరు పోయడం"],
+      "safety": "మీ ప్రాంతంలో పంట మరియు వ్యాధికి ఆమోదించబడిన ఉత్పత్తులను మాత్రమే ఉపయోగించండి. ఉత్పత్తి లేబుల్ లేదా స్థానిక వ్యవసాయ మార్గదర్శకాలను అనుసరించండి."
+    }
+  },
+  "Tomato Early Blight": {
+    "en": {
+      "crop": "Tomato",
+      "symptoms": "Bullseye-shaped brown spots on older, lower leaves. Leaves may turn yellow around the spots.",
+      "cause": "Alternaria solani fungus, favored by warm temperatures, high humidity, or frequent rain.",
+      "treatment": "Remove infected lower leaves. Apply appropriate fungicides early in the disease progression.",
+      "prevention": "Mulch the soil base. Space plants for airflow and water at the base, not the leaves.",
+      "risk_factors": ["Warm temperatures (24-29°C)", "High humidity", "Wet leaves"],
+      "safety": "Use only products approved for the crop and disease in your region. Follow the product label or local agricultural guidance."
+    },
+    "hi": {
+      "crop": "टमाटर",
+      "symptoms": "निचली पत्तियों पर सांड की आंख जैसे भूरे धब्बे। धब्बों के आसपास पत्तियां पीली हो सकती हैं।",
+      "cause": "अल्टरनेरिया सोलानी कवक, जो गर्म तापमान और उच्च आर्द्रता में बढ़ता है।",
+      "treatment": "संक्रमित निचली पत्तियों को हटा दें। रोग के शुरुआती चरण में उचित फफूंदनाशक लगाएं।",
+      "prevention": "मिट्टी पर मल्चिंग करें। हवा के प्रवाह के लिए पौधों के बीच जगह रखें और जड़ में पानी दें।",
+      "risk_factors": ["गर्म तापमान (24-29°C)", "उच्च आर्द्रता", "गीली पत्तियां"],
+      "safety": "केवल आपके क्षेत्र में फसल और रोग के लिए अनुमोदित उत्पादों का उपयोग करें। उत्पाद लेबल या स्थानीय कृषि मार्गदर्शन का पालन करें।"
+    },
+    "te": {
+      "crop": "టొమాటో",
+      "symptoms": "క్రింది ఆకులపై వలయాకారపు గోధుమ మచ్చలు. మచ్చల చుట్టూ ఆకులు పసుపు రంగులోకి మారవచ్చు.",
+      "cause": "ఆల్టర్నేరియా సోలాని ఫంగస్, ఇది వెచ్చని ఉష్ణోగ్రతలు మరియు అధిక తేమలో పెరుగుతుంది.",
+      "treatment": "సోకిన ఆకులను తొలగించండి. వ్యాధి ప్రారంభ దశలోనే తగిన శిలీంద్ర సంహారిణులను వాడండి.",
+      "prevention": "మట్టిపై మల్చ్ చేయండి. గాలి ప్రసరణకు మొక్కల మధ్య ఖాళీ ఉంచండి మరియు ఆకులపై కాకుండా మొదలులో నీరు పోయండి.",
+      "risk_factors": ["వెచ్చని ఉష్ణోగ్రతలు (24-29°C)", "అధిక తేమ", "తడి ఆకులు"],
+      "safety": "మీ ప్రాంతంలో పంట మరియు వ్యాధికి ఆమోదించబడిన ఉత్పత్తులను మాత్రమే ఉపయోగించండి. ఉత్పత్తి లేబుల్ లేదా స్థానిక వ్యవసాయ మార్గదర్శకాలను అనుసరించండి."
+    }
+  },
+  "Tomato Late Blight": {
+    "en": {
+      "crop": "Tomato",
+      "symptoms": "Dark brown water-soaked lesions on leaves and stems, white mold on undersides of leaves in humid conditions, rapid plant collapse.",
+      "cause": "Caused by the oomycete pathogen Phytophthora infestans, thriving in cool, wet conditions.",
+      "treatment": "Remove and destroy infected plant parts. Apply copper-based or approved fungicides according to label directions. Improve air circulation.",
+      "prevention": "Use certified disease-free seeds. Avoid overhead irrigation. Ensure good drainage and plant spacing. Rotate crops annually.",
+      "risk_factors": ["High humidity (>85%)", "Cool temperatures (10-20°C)", "High leaf wetness", "Poor air circulation"],
+      "safety": "Use only products approved for the crop and disease in your region. Follow the product label or local agricultural guidance."
+    },
+    "hi": {
+      "crop": "टमाटर",
+      "symptoms": "पत्तियों और तनों पर गहरे भूरे रंग के पानी भरे धब्बे, नम मौसम में पत्तियों के नीचे सफेद फफूंद, पौधे का तेजी से सूखना।",
+      "cause": "फाइटोफ्थोरा इन्फेस्टन्स के कारण होता है, जो ठंडे और नम मौसम में पनपता है।",
+      "treatment": "संक्रमित पौधों को हटाकर नष्ट कर दें। कॉपर आधारित या अनुमोदित फफूंदनाशक का प्रयोग करें। हवा का प्रवाह सुधारें।",
+      "prevention": "प्रमाणित रोग-मुक्त बीज का उपयोग करें। ऊपर से पानी न दें। अच्छी जल निकासी और पौधों की दूरी सुनिश्चित करें।",
+      "risk_factors": ["उच्च आर्द्रता (>85%)", "ठंडा तापमान (10-20°C)", "पत्तियों का अधिक गीला होना", "हवा का खराब प्रवाह"],
+      "safety": "केवल आपके क्षेत्र में फसल और रोग के लिए अनुमोदित उत्पादों का उपयोग करें। उत्पाद लेबल या स्थानीय कृषि मार्गदर्शन का पालन करें।"
+    },
+    "te": {
+      "crop": "టొమాటో",
+      "symptoms": "ఆకులు మరియు కాండం మీద ముదురు గోధుమ రంగు మచ్చలు, తేమ వాతావరణంలో ఆకుల క్రింద తెల్లటి బూజు, మొక్క వేగంగా కుప్పకూలడం.",
+      "cause": "ఫైటోఫ్తోరా ఇన్ఫెస్టాన్స్ వల్ల వస్తుంది, చల్లని మరియు తడి వాతావరణంలో వేగంగా పెరుగుతుంది.",
+      "treatment": "సోకిన మొక్క భాగాలను తొలగించి నాశనం చేయండి. రాగి ఆధారిత లేదా ఆమోదించబడిన శిలీంద్ర సంహారిణులను వాడండి. గాలి ప్రసరణను మెరుగుపరచండి.",
+      "prevention": "వ్యాధి లేని విత్తనాలను వాడండి. పైనుంచి నీరు పోయకండి. సరైన పారుదల మరియు మొక్కల మధ్య ఖాళీ ఉండేలా చూసుకోండి.",
+      "risk_factors": ["అధిక తేమ (>85%)", "చల్లని ఉష్ణోగ్రతలు (10-20°C)", "ఆకులు తడిగా ఉండటం", "గాలి ప్రసరణ లేకపోవడం"],
+      "safety": "మీ ప్రాంతంలో పంట మరియు వ్యాధికి ఆమోదించబడిన ఉత్పత్తులను మాత్రమే ఉపయోగించండి. ఉత్పత్తి లేబుల్ లేదా స్థానిక వ్యవసాయ మార్గదర్శకాలను అనుసరించండి."
+    }
+  },
+  "Tomato Leaf Mold": {
+    "en": {
+      "crop": "Tomato",
+      "symptoms": "Pale green or yellow spots on upper leaf surfaces. Olive-green to brown velvety mold on the undersides.",
+      "cause": "Passalora fulva fungus, which thrives in high humidity and warm temperatures, often in greenhouses.",
+      "treatment": "Improve air circulation and reduce humidity. Apply appropriate fungicides if the infection is severe.",
+      "prevention": "Space plants adequately. Avoid wetting foliage when watering. Use resistant varieties.",
+      "risk_factors": ["High relative humidity (>85%)", "Poor air circulation", "Warm temperatures"],
+      "safety": "Use only products approved for the crop and disease in your region. Follow the product label or local agricultural guidance."
+    },
+    "hi": {
+      "crop": "टमाटर",
+      "symptoms": "पत्तियों की ऊपरी सतह पर हल्के हरे या पीले धब्बे। निचली सतह पर जैतूनी-हरे से भूरे रंग की फफूंद।",
+      "cause": "पासालोरा फुल्वा कवक, जो उच्च आर्द्रता और गर्म तापमान में तेजी से बढ़ता है।",
+      "treatment": "हवा का प्रवाह सुधारें और नमी कम करें। संक्रमण गंभीर होने पर उचित फफूंदनाशक का प्रयोग करें।",
+      "prevention": "पौधों के बीच पर्याप्त जगह रखें। पत्तियों को गीला होने से बचाएं। प्रतिरोधी किस्मों का उपयोग करें।",
+      "risk_factors": ["उच्च सापेक्ष आर्द्रता (>85%)", "हवा का खराब प्रवाह", "गर्म तापमान"],
+      "safety": "केवल आपके क्षेत्र में फसल और रोग के लिए अनुमोदित उत्पादों का उपयोग करें। उत्पाद लेबल या स्थानीय कृषि मार्गदर्शन का पालन करें।"
+    },
+    "te": {
+      "crop": "టొమాటో",
+      "symptoms": "ఆకుల పైభాగంలో లేత ఆకుపచ్చ లేదా పసుపు మచ్చలు. ఆకుల క్రింద ఆలివ్-గ్రీన్ నుండి గోధుమ రంగు బూజు.",
+      "cause": "పాసలోరా ఫుల్వా ఫంగస్, ఇది అధిక తేమ మరియు వెచ్చని ఉష్ణోగ్రతలలో పెరుగుతుంది.",
+      "treatment": "గాలి ప్రసరణను మెరుగుపరచండి మరియు తేమను తగ్గించండి. వ్యాధి తీవ్రంగా ఉంటే తగిన శిలీంద్ర సంహారిణులను వాడండి.",
+      "prevention": "మొక్కల మధ్య తగినంత ఖాళీ ఉంచండి. నీరు పోసేటప్పుడు ఆకులు తడవకుండా చూసుకోండి. నిరోధక రకాలను వాడండి.",
+      "risk_factors": ["అధిక తేమ (>85%)", "గాలి ప్రసరణ లేకపోవడం", "వెచ్చని ఉష్ణోగ్రతలు"],
+      "safety": "మీ ప్రాంతంలో పంట మరియు వ్యాధికి ఆమోదించబడిన ఉత్పత్తులను మాత్రమే ఉపయోగించండి. ఉత్పత్తి లేబుల్ లేదా స్థానిక వ్యవసాయ మార్గదర్శకాలను అనుసరించండి."
+    }
+  },
+  "Tomato Septoria Leaf Spot": {
+    "en": {
+      "crop": "Tomato",
+      "symptoms": "Numerous small, circular spots with dark borders and gray centers on older leaves. Leaves yellow and drop off.",
+      "cause": "Septoria lycopersici fungus, favored by wet, humid weather.",
+      "treatment": "Remove heavily infected leaves. Apply appropriate fungicides early to protect healthy foliage.",
+      "prevention": "Rotate crops. Mulch around plants to prevent soil splashing. Avoid overhead irrigation.",
+      "risk_factors": ["High humidity", "Wet foliage", "Splashing rain or irrigation"],
+      "safety": "Use only products approved for the crop and disease in your region. Follow the product label or local agricultural guidance."
+    },
+    "hi": {
+      "crop": "टमाटर",
+      "symptoms": "पुरानी पत्तियों पर गहरे किनारों और भूरे केंद्रों वाले कई छोटे, गोल धब्बे। पत्तियां पीली होकर गिर जाती हैं।",
+      "cause": "सेप्टोरिया लाइकोपरसिसी कवक, जो गीले, नम मौसम में फैलता है।",
+      "treatment": "अत्यधिक संक्रमित पत्तियों को हटा दें। स्वस्थ पत्तियों की रक्षा के लिए शुरुआत में ही उचित फफूंदनाशक लगाएं।",
+      "prevention": "फसल चक्र अपनाएं। मिट्टी के छींटों को रोकने के लिए पौधों के आसपास मल्चिंग करें।",
+      "risk_factors": ["उच्च आर्द्रता", "गीली पत्तियां", "बारिश या सिंचाई के छींटे"],
+      "safety": "केवल आपके क्षेत्र में फसल और रोग के लिए अनुमोदित उत्पादों का उपयोग करें। उत्पाद लेबल या स्थानीय कृषि मार्गदर्शन का पालन करें।"
+    },
+    "te": {
+      "crop": "టొమాటో",
+      "symptoms": "పాత ఆకులపై ముదురు అంచులు మరియు బూడిద రంగు కేంద్రాలతో అనేక చిన్న, వృత్తాకార మచ్చలు. ఆకులు పసుపు రంగులోకి మారి రాలిపోతాయి.",
+      "cause": "సెప్టోరియా లైకోపెర్సిసి ఫంగస్, తడి మరియు తేమ వాతావరణంలో వ్యాపిస్తుంది.",
+      "treatment": "తీవ్రంగా సోకిన ఆకులను తొలగించండి. ఆరోగ్యకరమైన ఆకులను రక్షించడానికి ముందుగానే తగిన శిలీంద్ర సంహారిణులను వాడండి.",
+      "prevention": "పంట మార్పిడి చేయండి. మట్టి పడకుండా నిరోధించడానికి మొక్కల చుట్టూ మల్చ్ చేయండి.",
+      "risk_factors": ["అధిక తేమ", "తడి ఆకులు", "వర్షం లేదా నీటి స్ప్లాషింగ్"],
+      "safety": "మీ ప్రాంతంలో పంట మరియు వ్యాధికి ఆమోదించబడిన ఉత్పత్తులను మాత్రమే ఉపయోగించండి. ఉత్పత్తి లేబుల్ లేదా స్థానిక వ్యవసాయ మార్గదర్శకాలను అనుసరించండి."
+    }
+  },
+  "Tomato Spider Mites Two Spotted Spider Mite": {
+    "en": {
+      "crop": "Tomato",
+      "symptoms": "Leaves show pale yellow stippling or spotting. Fine webbing may be visible under leaves. Leaves eventually turn yellow and drop.",
+      "cause": "Tetranychus urticae (Two-spotted spider mite), a tiny pest that thrives in hot, dry conditions.",
+      "treatment": "Use insecticidal soaps, horticultural oils, or approved miticides. Wash mites off with a strong stream of water.",
+      "prevention": "Keep plants well-watered. Avoid broad-spectrum insecticides that kill natural predators.",
+      "risk_factors": ["Hot temperatures", "Dry, dusty conditions", "Water stress"],
+      "safety": "Use only products approved for the crop and pest in your region. Follow the product label or local agricultural guidance."
+    },
+    "hi": {
+      "crop": "टमाटर",
+      "symptoms": "पत्तियों पर हल्के पीले बिंदु या धब्बे दिखाई देते हैं। पत्तियों के नीचे बारीक जाले दिख सकते हैं।",
+      "cause": "टू-स्पॉटेड स्पाइडर माइट (मकड़ी), एक छोटा कीट जो गर्म और शुष्क मौसम में तेजी से बढ़ता है।",
+      "treatment": "कीटनाशक साबुन, बागवानी तेल या अनुमोदित माइटिसाइड्स का उपयोग करें। पानी की तेज धार से माइट्स को धो लें।",
+      "prevention": "पौधों को अच्छी तरह से पानी दें। प्राकृतिक शिकारियों को मारने वाले कीटनाशकों से बचें।",
+      "risk_factors": ["गर्म तापमान", "शुष्क, धूल भरी स्थितियां", "पानी की कमी"],
+      "safety": "केवल आपके क्षेत्र में फसल और कीट के लिए अनुमोदित उत्पादों का उपयोग करें। उत्पाद लेबल या स्थानीय कृषि मार्गदर्शन का पालन करें।"
+    },
+    "te": {
+      "crop": "టొమాటో",
+      "symptoms": "ఆకులపై లేత పసుపు రంగు చుక్కలు లేదా మచ్చలు కనిపిస్తాయి. ఆకుల క్రింద సన్నని సాలెగూడు కనిపించవచ్చు.",
+      "cause": "టూ-స్పాటెడ్ స్పైడర్ మైట్, ఇది వేడి, పొడి పరిస్థితులలో పెరిగే చిన్న పురుగు.",
+      "treatment": "క్రిమిసంహారక సబ్బులు, నూనెలు లేదా ఆమోదించబడిన మందులను వాడండి. బలమైన నీటి ప్రవాహంతో వాటిని కడిగేయండి.",
+      "prevention": "మొక్కలకు తగినంత నీరు పోయండి. సహజ శత్రువులను చంపే క్రిమిసంహారక మందులను నివారించండి.",
+      "risk_factors": ["వేడి ఉష్ణోగ్రతలు", "పొడి, దుమ్ముతో కూడిన పరిస్థితులు", "నీటి కొరత"],
+      "safety": "మీ ప్రాంతంలో పంట మరియు చీడకు ఆమోదించబడిన ఉత్పత్తులను మాత్రమే ఉపయోగించండి. ఉత్పత్తి లేబుల్ లేదా స్థానిక వ్యవసాయ మార్గదర్శకాలను అనుసరించండి."
+    }
+  },
+  "Tomato Target Spot": {
+    "en": {
+      "crop": "Tomato",
+      "symptoms": "Small brown spots with light centers on leaves, expanding to dark target-like lesions. Fruit shows dark, sunken spots.",
+      "cause": "Corynespora cassiicola fungus, favored by high humidity and moderate to warm temperatures.",
+      "treatment": "Apply appropriate fungicides when disease is first noticed. Remove severely infected leaves.",
+      "prevention": "Improve airflow through proper spacing and pruning. Avoid excessive nitrogen fertilization.",
+      "risk_factors": ["High humidity", "Poor air circulation", "Prolonged leaf wetness"],
+      "safety": "Use only products approved for the crop and disease in your region. Follow the product label or local agricultural guidance."
+    },
+    "hi": {
+      "crop": "टमाटर",
+      "symptoms": "पत्तियों पर हल्के केंद्रों वाले छोटे भूरे धब्बे, जो बड़े होकर लक्ष्य जैसे निशान बन जाते हैं। फलों पर गहरे, धंसे हुए धब्बे।",
+      "cause": "कोरीनेस्पोरा कैसिकोला कवक, जो उच्च आर्द्रता और मध्यम से गर्म तापमान में पनपता है।",
+      "treatment": "रोग पहली बार दिखने पर उचित फफूंदनाशक का प्रयोग करें। गंभीर रूप से संक्रमित पत्तियों को हटा दें।",
+      "prevention": "उचित दूरी और छंटाई के माध्यम से हवा का प्रवाह सुधारें। अत्यधिक नाइट्रोजन उर्वरक से बचें।",
+      "risk_factors": ["उच्च आर्द्रता", "हवा का खराब प्रवाह", "लंबे समय तक पत्तियों का गीला रहना"],
+      "safety": "केवल आपके क्षेत्र में फसल और रोग के लिए अनुमोदित उत्पादों का उपयोग करें। उत्पाद लेबल या स्थानीय कृषि मार्गदर्शन का पालन करें।"
+    },
+    "te": {
+      "crop": "టొమాటో",
+      "symptoms": "ఆకులపై లేత కేంద్రాలతో చిన్న గోధుమ మచ్చలు, ఇవి ముదురు లక్ష్యం లాంటి మచ్చలుగా విస్తరిస్తాయి. పండ్లపై ముదురు మచ్చలు.",
+      "cause": "కోరినెస్పోరా కాస్సీకోలా ఫంగస్, ఇది అధిక తేమ మరియు మితమైన నుండి వెచ్చని ఉష్ణోగ్రతల ద్వారా వస్తుంది.",
+      "treatment": "వ్యాధి మొదటిసారి గమనించినప్పుడు తగిన శిలీంద్ర సంహారిణులను వాడండి. తీవ్రంగా సోకిన ఆకులను తొలగించండి.",
+      "prevention": "సరైన ఖాళీ మరియు కత్తిరింపు ద్వారా గాలి ప్రసరణను మెరుగుపరచండి. అధిక నత్రజని ఎరువులను నివారించండి.",
+      "risk_factors": ["అధిక తేమ", "గాలి ప్రసరణ లేకపోవడం", "ఆకులు తడిగా ఉండటం"],
+      "safety": "మీ ప్రాంతంలో పంట మరియు వ్యాధికి ఆమోదించబడిన ఉత్పత్తులను మాత్రమే ఉపయోగించండి. ఉత్పత్తి లేబుల్ లేదా స్థానిక వ్యవసాయ మార్గదర్శకాలను అనుసరించండి."
+    }
+  },
+  "Tomato Tomato Yellow Leaf Curl Virus": {
+    "en": {
+      "crop": "Tomato",
+      "symptoms": "Yellowing and upward curling of leaf margins. Plants are severely stunted and drop flowers prematurely.",
+      "cause": "Tomato Yellow Leaf Curl Virus (TYLCV), transmitted by sweetpotato whiteflies.",
+      "treatment": "Infected plants cannot be cured and should be immediately removed and destroyed to prevent spread.",
+      "prevention": "Use virus-resistant tomato varieties. Control whitefly populations. Use reflective mulches.",
+      "risk_factors": ["High whitefly populations", "Warm weather", "Presence of alternative weed hosts"],
+      "safety": "Use only products approved for the crop and pest in your region. Follow the product label or local agricultural guidance."
+    },
+    "hi": {
+      "crop": "टमाटर",
+      "symptoms": "पत्तियों के किनारों का पीला पड़ना और ऊपर की ओर मुड़ना। पौधे का विकास रुक जाता है और फूल झड़ने लगते हैं।",
+      "cause": "टोमैटो येलो लीफ कर्ल वायरस (TYLCV), जो सफेद मक्खियों द्वारा फैलता है।",
+      "treatment": "संक्रमित पौधों को ठीक नहीं किया जा सकता। फैलाव रोकने के लिए उन्हें तुरंत उखाड़कर नष्ट कर दें।",
+      "prevention": "वायरस-प्रतिरोधी किस्मों का उपयोग करें। सफेद मक्खी की आबादी को नियंत्रित करें।",
+      "risk_factors": ["सफेद मक्खियों की अधिक आबादी", "गर्म मौसम", "आसपास खरपतवार की उपस्थिति"],
+      "safety": "केवल आपके क्षेत्र में फसल और कीट के लिए अनुमोदित उत्पादों का उपयोग करें। उत्पाद लेबल या स्थानीय कृषि मार्गदर्शन का पालन करें।"
+    },
+    "te": {
+      "crop": "టొమాటో",
+      "symptoms": "ఆకుల అంచులు పసుపు రంగులోకి మారి పైకి ముడుచుకుంటాయి. మొక్కల పెరుగుదల ఆగిపోయి పూలు రాలిపోతాయి.",
+      "cause": "టొమాటో ఎల్లో లీఫ్ కర్ల్ వైరస్ (TYLCV), ఇది తెల్లదోమల ద్వారా వ్యాపిస్తుంది.",
+      "treatment": "సోకిన మొక్కలను నయం చేయలేము. వ్యాప్తి చెందకుండా వాటిని వెంటనే తొలగించి నాశనం చేయాలి.",
+      "prevention": "వైరస్-నిరోధక టొమాటో రకాలను ఉపయోగించండి. తెల్లదోమల జనాభాను నియంత్రించండి.",
+      "risk_factors": ["తెల్లదోమల జనాభా ఎక్కువ", "వెచ్చని వాతావరణం", "కలుపు మొక్కల ఉనికి"],
+      "safety": "మీ ప్రాంతంలో పంట మరియు చీడకు ఆమోదించబడిన ఉత్పత్తులను మాత్రమే ఉపయోగించండి. ఉత్పత్తి లేబుల్ లేదా స్థానిక వ్యవసాయ మార్గదర్శకాలను అనుసరించండి."
+    }
+  },
+  "Tomato Tomato Mosaic Virus": {
+    "en": {
+      "crop": "Tomato",
+      "symptoms": "Light and dark green mottled (mosaic) pattern on leaves. Plants may be stunted with distorted leaves and poor fruit yield.",
+      "cause": "Tomato Mosaic Virus (ToMV), a highly contagious virus spread mechanically (tools, hands) and through infected seeds.",
+      "treatment": "No cure exists for infected plants. Remove and destroy infected plants immediately.",
+      "prevention": "Use certified disease-free seeds and resistant varieties. Wash hands and tools frequently with soap or bleach solution.",
+      "risk_factors": ["Contaminated tools or hands", "Infected seeds", "Tobacco use near plants"],
+      "safety": "Maintain strict field hygiene. Use only approved agricultural practices."
+    },
+    "hi": {
+      "crop": "टमाटर",
+      "symptoms": "पत्तियों पर हल्के और गहरे हरे रंग का मोज़ेक (धब्बेदार) पैटर्न। पत्तियां विकृत हो जाती हैं और उपज कम होती है।",
+      "cause": "टोमैटो मोज़ेक वायरस (ToMV), जो उपकरणों, हाथों और संक्रमित बीजों के माध्यम से आसानी से फैलता है।",
+      "treatment": "संक्रमित पौधों का कोई इलाज नहीं है। संक्रमित पौधों को तुरंत उखाड़कर नष्ट कर दें।",
+      "prevention": "प्रमाणित रोग-मुक्त बीज और प्रतिरोधी किस्मों का उपयोग करें। साबुन या ब्लीच से हाथ और उपकरण धोएं।",
+      "risk_factors": ["दूषित उपकरण या हाथ", "संक्रमित बीज", "पौधों के पास तंबाकू का उपयोग"],
+      "safety": "कठोर स्वच्छता बनाए रखें। केवल अनुमोदित कृषि पद्धतियों का उपयोग करें।"
+    },
+    "te": {
+      "crop": "టొమాటో",
+      "symptoms": "ఆకులపై లేత మరియు ముదురు ఆకుపచ్చ మచ్చలు (మొజాయిక్) కనిపిస్తాయి. ఆకులు వక్రీకృతమై దిగుబడి తగ్గుతుంది.",
+      "cause": "టొమాటో మొజాయిక్ వైరస్ (ToMV), ఇది పనిముట్లు, చేతులు మరియు సోకిన విత్తనాల ద్వారా సులభంగా వ్యాపిస్తుంది.",
+      "treatment": "సోకిన మొక్కలకు ఎటువంటి నివారణ లేదు. సోకిన మొక్కలను వెంటనే తొలగించి నాశనం చేయండి.",
+      "prevention": "వ్యాధి లేని విత్తనాలు మరియు నిరోధక రకాలను వాడండి. సబ్బు లేదా బ్లీచ్ తో చేతులు మరియు పనిముట్లను కడగాలి.",
+      "risk_factors": ["కలుషితమైన పనిముట్లు లేదా చేతులు", "సోకిన విత్తనాలు", "పొగాకు వాడకం"],
+      "safety": "పొలంలో కఠినమైన పరిశుభ్రత పాటించండి. ఆమోదించబడిన వ్యవసాయ పద్ధతులను మాత్రమే ఉపయోగించండి."
+    }
+  },
+  "Tomato Healthy": {
+    "en": {
+      "crop": "Tomato",
+      "symptoms": "No symptoms detected. Plant appears healthy.",
+      "cause": "N/A",
+      "treatment": "No treatment needed.",
+      "prevention": "Continue regular care: proper watering, adequate sunlight, regular monitoring.",
+      "risk_factors": ["Overwatering", "Poor soil drainage", "Insufficient sunlight"],
+      "safety": "Maintain safe agricultural practices."
+    },
+    "hi": {
+      "crop": "टमाटर",
+      "symptoms": "कोई लक्षण नहीं मिला। पौधा स्वस्थ दिखता है।",
+      "cause": "लागू नहीं",
+      "treatment": "किसी उपचार की आवश्यकता नहीं है।",
+      "prevention": "नियमित देखभाल जारी रखें: उचित पानी, पर्याप्त धूप, नियमित निगरानी।",
+      "risk_factors": ["अधिक पानी देना", "मिट्टी में खराब जल निकासी", "अपर्याप्त धूप"],
+      "safety": "सुरक्षित कृषि पद्धतियों को बनाए रखें।"
+    },
+    "te": {
+      "crop": "టొమాటో",
+      "symptoms": "ఎటువంటి లక్షణాలు లేవు. మొక్క ఆరోగ్యంగా కనిపిస్తోంది.",
+      "cause": "వర్తించదు",
+      "treatment": "ఎటువంటి చికిత్స అవసరం లేదు.",
+      "prevention": "సరైన నీరు, తగినంత సూర్యరశ్మి, క్రమం తప్పకుండా పర్యవేక్షించడం కొనసాగించండి.",
+      "risk_factors": ["ఎక్కువ నీరు పెట్టడం", "నీరు నిలిచిపోవడం", "తగినంత సూర్యరశ్మి లేకపోవడం"],
+      "safety": "సురక్షితమైన వ్యవసాయ పద్ధతులను పాటించండి."
+    }
+  }
+}

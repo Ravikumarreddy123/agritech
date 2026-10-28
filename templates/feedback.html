@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<style>
+  .feedback-container {
+    max-width: 600px;
+    margin: 40px auto;
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+
+  h2 {
+    text-align: center;
+    color: #006400;
+  }
+
+  label {
+    margin-top: 15px;
+    display: block;
+    font-weight: bold;
+  }
+
+  input[type="text"], textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+  }
+
+  .rating-stars {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    margin-top: 10px;
+    gap: 5px;
+  }
+
+  .rating-stars input {
+    display: none;
+  }
+
+  .rating-stars label {
+    font-size: 30px;
+    color: #ccc; /* empty star */
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+
+  .rating-stars input:checked ~ label,
+  .rating-stars label:hover,
+  .rating-stars label:hover ~ label {
+    color: gold; /* filled star */
+  }
+
+  button {
+    margin-top: 20px;
+    background-color: #006400;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .success {
+    text-align: center;
+    color: green;
+    margin-top: 15px;
+  }
+</style>
+
+<div class="feedback-container">
+  <h2>📝 Share Your Feedback</h2>
+
+  {% if success %}
+    <p class="success">✅ Thank you for your feedback!</p>
+  {% endif %}
+
+  <form method="POST">
+    <label for="name">Name:</label>
+    <input type="text" name="name" required placeholder="Enter your name" />
+
+    <label for="feedword">Feedback Message:</label>
+    <textarea name="feedword" rows="5" required placeholder="Write your thoughts..."></textarea>
+
+    <label>Rating:</label>
+    <div class="rating-stars">
+      <input type="radio" id="star5" name="rating" value="5" required>
+      <label for="star5">&#9733;</label>
+
+      <input type="radio" id="star4" name="rating" value="4">
+      <label for="star4">&#9733;</label>
+
+      <input type="radio" id="star3" name="rating" value="3">
+      <label for="star3">&#9733;</label>
+
+      <input type="radio" id="star2" name="rating" value="2">
+      <label for="star2">&#9733;</label>
+
+      <input type="radio" id="star1" name="rating" value="1">
+      <label for="star1">&#9733;</label>
+    </div>
+
+    <button type="submit">Submit Feedback</button>
+  </form>
+
+  <div style="text-align:center; margin-top: 20px;">
+    <a href="{{ url_for('feedback_history') }}">📋 View Feedback History</a>
+  </div>
+</div>
+
+{% endblock %}

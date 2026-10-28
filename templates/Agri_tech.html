@@ -1,0 +1,411 @@
+{% extends "base.html" %}
+{% block title %}Detect Disease | AgriTech{% endblock %}
+{% block content %}
+
+<div class="detect-page">
+
+  <!-- ══ LEFT: Upload Panel ══ -->
+  <div class="detect-left">
+
+    <!-- STEP 1: Upload -->
+    <div class="card upload-card">
+      <div class="card-header">
+        <span class="step-badge">1</span>
+        <h2>Upload Leaf Image</h2>
+      </div>
+      <div class="card-body">
+
+        <!-- Upload Zone -->
+        <div class="upload-zone" id="upload-zone">
+          <div class="upload-icon-wrap" id="upload-icon">
+            <span style="font-size:3rem;">📷</span>
+          </div>
+          <p class="upload-title">Drag &amp; Drop or <strong>Click to Upload</strong></p>
+          <p class="upload-hint" id="upload-text">Supports PNG, JPG, JPEG, WEBP · Max 50MB</p>
+          <!-- Image preview inside upload zone -->
+          <img id="image-preview" src="" alt="Preview" style="display:none; max-height:180px; border-radius:10px; margin-top:10px; box-shadow:0 2px 12px rgba(0,0,0,0.15);">
+          <!-- Hidden file input (ID must match detect.js: image-input) -->
+          <input type="file" id="image-input" accept="image/png,image/jpeg,image/jpg,image/webp,image/bmp" style="display:none;">
+        </div>
+
+        <!-- Error Box -->
+        <div class="alert alert-error" id="form-error" style="display:none; margin-top:12px;"></div>
+
+        <!-- Mode Toggle -->
+        <div class="mode-section">
+          <label class="mode-label">Detection Mode:</label>
+          <div class="mode-toggle-group">
+            <button class="mode-btn active" id="btn-offline" onclick="setMode('offline')">📴 OFFLINE</button>
+            <button class="mode-btn" id="btn-online" onclick="setMode('online')">🌐 ONLINE (Gemini AI)</button>
+          </div>
+          <p class="mode-hint" id="mode-hint">Uses local AI model + local advisory. No internet needed.</p>
+        </div>
+
+        <!-- Analyze Button -->
+        <button class="btn-analyze" id="analyze-btn">
+          🔍 Analyze Plant
+        </button>
+      </div>
+    </div>
+
+    <!-- STEP 5: Environmental Conditions (Optional) -->
+    <div class="card env-card">
+      <div class="card-header collapsible" onclick="toggleEnv()">
+        <span class="step-badge">5</span>
+        <h2>Optional Environmental Conditions</h2>
+        <span id="env-toggle-icon" style="margin-left:auto; color:#2e7d32;">▼</span>
+      </div>
+      <div class="card-body" id="env-body">
+        <div class="env-notice">
+          <strong>ℹ️ User-Provided Values</strong>
+          <p>Enter conditions observed in your field to estimate disease progression risk. All fields are <strong>optional</strong>.</p>
+          <p style="color:#c62828; font-size:0.82rem;">⚠️ These are not sensor readings. Enter values manually.</p>
+        </div>
+        <div class="env-grid">
+          <div class="form-group">
+            <label class="form-label">🌡️ Temperature (°C)</label>
+            <!-- ID must match detect.js: env-temperature -->
+            <input type="number" id="env-temperature" class="form-input" placeholder="e.g. 28" min="0" max="60" step="0.1">
+            <span class="form-hint">Range: 0–60 °C</span>
+          </div>
+          <div class="form-group">
+            <label class="form-label">💧 Humidity (%)</label>
+            <input type="number" id="env-humidity" class="form-input" placeholder="e.g. 75" min="0" max="100" step="1">
+            <span class="form-hint">Range: 0–100 %</span>
+          </div>
+          <div class="form-group">
+            <label class="form-label">🌱 Soil Moisture (%)</label>
+            <input type="number" id="env-soil_moisture" class="form-input" placeholder="e.g. 60" min="0" max="100" step="1">
+            <span class="form-hint">Range: 0–100 %</span>
+          </div>
+          <div class="form-group">
+            <label class="form-label">🍃 Leaf Wetness (%)</label>
+            <input type="number" id="env-leaf_wetness" class="form-input" placeholder="e.g. 50" min="0" max="100" step="1">
+            <span class="form-hint">Range: 0–100 %</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /detect-left -->
+
+  <!-- ══ RIGHT: Results Panel ══ -->
+  <div class="detect-right">
+
+    <!-- Placeholder (hidden after first result) -->
+    <div class="no-result-placeholder" id="no-result-placeholder">
+      <div style="font-size:4rem;">🌿</div>
+      <h3>Upload a leaf image to begin</h3>
+      <p>Supports Tomato, Potato, and Bell Pepper plants.</p>
+    </div>
+
+    <!-- Result Section (hidden until detection) -->
+    <div id="result-section" style="display:none;">
+
+      <!-- STEP 2-4: Disease + Confidence -->
+      <div class="card result-card">
+        <div class="card-header">
+          <span class="step-badge">2–4</span>
+          <h2>🌱 Diagnosis Result</h2>
+          <!-- ID matches detect.js: mode-badge -->
+          <span class="mode-badge" id="mode-badge">OFFLINE</span>
+        </div>
+        <div class="card-body">
+
+          <!-- Low confidence warning — ID matches detect.js -->
+          <div class="alert alert-warning" id="low-confidence-warning" style="display:none;">
+            ⚠️ <strong>Low Confidence.</strong> Please capture a clearer image of the leaf.
+          </div>
+          <!-- Validation error — ID matches detect.js -->
+          <div class="alert alert-error" id="validation-error" style="display:none;"></div>
+
+          <div class="diagnosis-box">
+            <div class="crop-tag" id="crop-name-tag"></div>
+            <!-- ID matches detect.js: disease-name -->
+            <div class="disease-name" id="disease-name">—</div>
+
+            <div class="confidence-section">
+              <div class="conf-row">
+                <span>Confidence</span>
+                <!-- ID matches detect.js: confidence-text -->
+                <span class="confidence-value" id="confidence-text">—</span>
+              </div>
+              <div class="confidence-bar-wrapper">
+                <!-- ID matches detect.js: confidence-fill -->
+                <div class="confidence-fill" id="confidence-fill" style="width:0%"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Uploaded image display -->
+          <div style="text-align:center; margin-top:12px;">
+            <img id="result-image" src="" alt="Analyzed leaf"
+                 style="display:none; max-height:160px; border-radius:10px; box-shadow:0 3px 12px rgba(0,0,0,0.15);">
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 6: Risk -->
+      <div class="card risk-card">
+        <div class="card-header">
+          <span class="step-badge">6</span>
+          <h2>⚠️ Estimated Disease Progression Risk</h2>
+        </div>
+        <div class="card-body">
+          <div style="text-align:center; margin-bottom:12px;">
+            <!-- ID matches detect.js: risk-badge -->
+            <span class="risk-badge GENERAL" id="risk-badge">GENERAL</span>
+            <p class="risk-disclaimer">This is an advisory estimate. Not a validated agricultural prediction.</p>
+          </div>
+          <div id="risk-reasons-box">
+            <ul id="risk-reasons-list" style="color:#444; font-size:0.9rem; padding-left:20px;"></ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 7-10: Advisory + Language + Voice -->
+      <div class="card advisory-card">
+        <div class="card-header" style="flex-wrap:wrap; gap:8px;">
+          <span class="step-badge">7–10</span>
+          <h2>💊 Treatment Advisory</h2>
+          <!-- STEP 9: Language selector -->
+          <div class="advisory-lang-group">
+            <label style="font-size:0.82rem; font-weight:600; color:#555;">🌐 Language:</label>
+            <select id="advisory-lang-select" class="lang-select-sm" onchange="onLangChange(this.value)">
+              <option value="en">English</option>
+              <option value="hi">हिन्दी</option>
+              <option value="te">తెలుగు</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Translation notice — ID matches detect.js -->
+        <div class="alert alert-warning" id="translation-notice" style="display:none; margin:0 16px; border-radius:6px;">
+          ⚠️ Translation unavailable. Showing English.
+        </div>
+
+        <div class="card-body">
+          <!-- Tabs — data-tab attribute matches detect.js showTab() -->
+          <div class="advisory-tabs">
+            <button class="tab-btn active" data-tab="symptoms" onclick="showTab('symptoms')">🔬 Symptoms</button>
+            <button class="tab-btn" data-tab="cause" onclick="showTab('cause')">🦠 Cause</button>
+            <button class="tab-btn" data-tab="treatment" onclick="showTab('treatment')">💊 Treatment</button>
+            <button class="tab-btn" data-tab="prevention" onclick="showTab('prevention')">🛡️ Prevention</button>
+          </div>
+
+          <!-- Tab content — IDs match detect.js: tab-symptoms, tab-cause, etc. -->
+          <div class="tab-content-wrapper">
+            <div class="tab-content active" id="tab-symptoms">
+              <p style="color:#aaa;">No data yet.</p>
+            </div>
+            <div class="tab-content" id="tab-cause">
+              <p style="color:#aaa;">No data yet.</p>
+            </div>
+            <div class="tab-content" id="tab-treatment">
+              <p style="color:#aaa;">No data yet.</p>
+            </div>
+            <div class="tab-content" id="tab-prevention">
+              <p style="color:#aaa;">No data yet.</p>
+            </div>
+          </div>
+
+          <!-- STEP 10: Voice -->
+          <div class="voice-section">
+            <button class="voice-btn" id="voice-btn">🔊 Listen to Advice</button>
+            <p id="voice-unavailable-msg" style="display:none; color:#888; font-size:0.85rem; margin-top:8px;">
+              Voice output is not available on this device.
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+    </div><!-- /result-section -->
+  </div><!-- /detect-right -->
+
+</div><!-- /detect-page -->
+
+<style>
+/* ── Layout ── */
+.detect-page {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  padding: 24px;
+  max-width: 1400px;
+  margin: 0 auto;
+  align-items: start;
+}
+@media (max-width: 900px) { .detect-page { grid-template-columns: 1fr; } }
+
+/* ── Cards ── */
+.card { background: #fff; border-radius: 14px; box-shadow: 0 3px 16px rgba(0,0,0,0.09); margin-bottom: 20px; overflow: hidden; }
+.card-header { background: #f8fdf8; border-bottom: 1px solid #e8f5e9; padding: 14px 18px; display: flex; align-items: center; gap: 10px; }
+.card-header h2 { font-size: 1rem; color: #1b5e20; margin: 0; flex:1; }
+.card-body { padding: 18px; }
+.step-badge { min-width:28px; height:28px; border-radius:50%; background:#2e7d32; color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:0.8rem; flex-shrink:0; }
+
+/* ── Upload Zone ── */
+.upload-zone {
+  border: 2px dashed #4caf50; border-radius: 12px; padding: 30px 20px;
+  text-align: center; cursor: pointer; transition: all 0.2s; background: #f9fef9;
+  min-height: 160px;
+}
+.upload-zone:hover, .upload-zone.dragover { border-color: #1b5e20; background: #e8f5e9; }
+.upload-title { font-weight: 600; color: #2e7d32; margin: 8px 0 4px; }
+.upload-hint { color: #888; font-size: 0.83rem; margin: 0; }
+
+/* ── Mode Toggle ── */
+.mode-section { margin: 16px 0; }
+.mode-label { font-weight: 600; font-size: 0.9rem; color: #333; display: block; margin-bottom: 8px; }
+.mode-toggle-group { display: flex; gap: 8px; }
+.mode-btn {
+  flex: 1; padding: 10px; border: 2px solid #ddd; background: #fff;
+  border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 0.82rem;
+  transition: all 0.2s; color: #666;
+}
+.mode-btn.active { border-color: #2e7d32; background: #2e7d32; color: #fff; }
+.mode-hint { color: #888; font-size: 0.78rem; margin: 6px 0 0; }
+
+/* ── Analyze Button ── */
+.btn-analyze {
+  width: 100%; padding: 15px; background: linear-gradient(135deg, #2e7d32, #1b5e20);
+  color: #fff; border: none; border-radius: 10px; font-size: 1.05rem;
+  font-weight: 700; cursor: pointer; transition: all 0.2s; margin-top: 14px;
+}
+.btn-analyze:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(46,125,50,0.4); }
+
+/* ── Env Section ── */
+.env-notice { background: #fff8e1; border-radius: 8px; padding: 12px 14px; margin-bottom: 14px; font-size: 0.85rem; }
+.env-notice p { margin: 4px 0 0; }
+.env-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+@media (max-width: 600px) { .env-grid { grid-template-columns: 1fr; } }
+.form-group { display: flex; flex-direction: column; }
+.form-label { font-weight: 600; font-size: 0.82rem; color: #444; margin-bottom: 5px; }
+.form-input { padding: 9px 12px; border: 1px solid #ddd; border-radius: 8px; font-size: 0.92rem; }
+.form-input:focus { outline: none; border-color: #4caf50; box-shadow: 0 0 0 3px rgba(76,175,80,0.12); }
+.form-hint { font-size: 0.73rem; color: #aaa; margin-top: 3px; }
+.collapsible { cursor: pointer; }
+
+/* ── Placeholder ── */
+.no-result-placeholder { text-align: center; padding: 70px 30px; color: #aaa; }
+.no-result-placeholder h3 { color: #555; margin-bottom: 8px; }
+
+/* ── Diagnosis Box ── */
+.diagnosis-box { text-align: center; padding: 16px 0; }
+.crop-tag { display: inline-block; background: #e8f5e9; color: #2e7d32; padding: 3px 14px; border-radius: 20px; font-size: 0.82rem; font-weight: 600; margin-bottom: 8px; }
+.disease-name { font-size: 1.7rem; font-weight: 800; color: #1b5e20; margin: 8px 0; }
+
+.confidence-section { margin-top: 14px; }
+.conf-row { display: flex; justify-content: space-between; font-weight: 600; font-size: 0.88rem; margin-bottom: 6px; }
+.confidence-value { color: #2e7d32; }
+.confidence-bar-wrapper { height: 10px; background: #e8f5e9; border-radius: 5px; overflow: hidden; }
+.confidence-fill { height: 100%; background: linear-gradient(90deg, #4caf50, #1b5e20); border-radius: 5px; transition: width 0.8s ease; }
+
+.mode-badge { font-size: 0.72rem; font-weight: 700; padding: 3px 10px; border-radius: 12px; background: #2e7d32; color: #fff; }
+
+/* ── Risk ── */
+.risk-badge {
+  display: inline-block; padding: 8px 24px; border-radius: 30px;
+  font-size: 1.3rem; font-weight: 800; letter-spacing: 2px; margin-bottom: 8px;
+}
+.risk-badge.LOW  { background: #e8f5e9; color: #1b5e20; border: 2px solid #4caf50; }
+.risk-badge.MEDIUM { background: #fff8e1; color: #e65100; border: 2px solid #ff8f00; }
+.risk-badge.HIGH { background: #ffebee; color: #c62828; border: 2px solid #f44336; }
+.risk-badge.GENERAL { background: #e3f2fd; color: #1565c0; border: 2px solid #1976d2; }
+.risk-disclaimer { font-size: 0.78rem; color: #888; font-style: italic; }
+
+/* ── Advisory Tabs ── */
+.advisory-lang-group { display: flex; align-items: center; gap: 6px; margin-left: auto; }
+.lang-select-sm { padding: 4px 8px; border: 1px solid #ddd; border-radius: 6px; font-size: 0.82rem; }
+
+.advisory-tabs { display: flex; gap: 4px; margin-bottom: 14px; flex-wrap: wrap; }
+.tab-btn {
+  padding: 7px 14px; border: 1px solid #ddd; background: #fff;
+  border-radius: 8px; cursor: pointer; font-size: 0.82rem; font-weight: 600;
+  transition: all 0.2s; color: #666;
+}
+.tab-btn.active { background: #2e7d32; border-color: #2e7d32; color: #fff; }
+
+.tab-content-wrapper { min-height: 80px; }
+.tab-content { display: none; animation: fadeIn 0.3s; padding: 4px 0; }
+.tab-content.active { display: block; }
+.tab-content p, .tab-content ul { color: #444; line-height: 1.7; font-size: 0.92rem; }
+.tab-content ul { padding-left: 18px; }
+.tab-content li { margin-bottom: 4px; }
+
+@keyframes fadeIn { from{opacity:0;transform:translateY(6px)} to{opacity:1;transform:translateY(0)} }
+
+/* ── Voice ── */
+.voice-section { margin-top: 18px; border-top: 1px solid #f0f0f0; padding-top: 14px; text-align: center; }
+.voice-btn {
+  padding: 11px 26px; background: #2e7d32; color: #fff; border: none;
+  border-radius: 30px; font-size: 0.97rem; font-weight: 600; cursor: pointer;
+  transition: all 0.2s; width: auto;
+}
+.voice-btn:hover { background: #1b5e20; transform: scale(1.02); }
+.voice-btn.speaking { background: #c62828; }
+
+/* ── Alerts ── */
+.alert { border-radius: 8px; padding: 10px 14px; margin-bottom: 10px; font-size: 0.88rem; }
+.alert-warning { background: #fff8e1; border: 1px solid #ffe082; color: #e65100; }
+.alert-error   { background: #ffebee; border: 1px solid #ffcdd2; color: #c62828; }
+.alert-success { background: #e8f5e9; border: 1px solid #c8e6c9; color: #1b5e20; }
+</style>
+
+{% endblock %}
+{% block extra_scripts %}
+<script src="{{ url_for('static', filename='js/detect.js') }}?v=2.1"></script>
+<script>
+/* ── Page-level helpers (not in detect.js) ── */
+let currentMode = 'offline';
+
+function setMode(mode) {
+  currentMode = mode;
+  document.getElementById('btn-offline').classList.toggle('active', mode === 'offline');
+  document.getElementById('btn-online').classList.toggle('active', mode === 'online');
+  document.getElementById('mode-hint').textContent = mode === 'offline'
+    ? 'Uses local AI model + local advisory. No internet needed.'
+    : 'Uses Gemini AI for detailed advisory. Requires internet + API key.';
+}
+
+function toggleEnv() {
+  const body = document.getElementById('env-body');
+  const icon = document.getElementById('env-toggle-icon');
+  const open = body.style.display !== 'none';
+  body.style.display = open ? 'none' : 'block';
+  icon.textContent   = open ? '▶' : '▼';
+}
+
+/* Override getMode() from detect.js to read our custom toggle */
+function getMode() { return currentMode; }
+
+/* Language change handler */
+function onLangChange(lang) {
+  localStorage.setItem('agritech_lang', lang);
+  switchLanguage(lang); /* from detect.js */
+}
+
+/* Sync advisory language selector with stored preference */
+document.addEventListener('DOMContentLoaded', function () {
+  const stored = localStorage.getItem('agritech_lang') || 'en';
+  const sel = document.getElementById('advisory-lang-select');
+  if (sel) sel.value = stored;
+
+  /* Show result-image when preview is available */
+  const imgInput = document.getElementById('image-input');
+  if (imgInput) {
+    imgInput.addEventListener('change', function(e) {
+      const f = e.target.files[0];
+      if (!f) return;
+      const reader = new FileReader();
+      reader.onload = function(ev) {
+        const ri = document.getElementById('result-image');
+        if (ri) { ri.src = ev.target.result; ri.style.display = 'block'; }
+      };
+      reader.readAsDataURL(f);
+    });
+  }
+});
+</script>
+{% endblock %}

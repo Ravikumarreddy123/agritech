@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %}AgriTech — AI Plant Disease Detection{% endblock %}</title>
+  <meta name="description" content="AgriTech: AI-powered plant disease detection for farmers. Offline-first, multilingual, voice advisory.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}?v=2.1">
+  {% block extra_head %}{% endblock %}
+</head>
+<body>
+
+<!-- ═══════════════════ NAVBAR ═══════════════════ -->
+<nav class="navbar" id="main-navbar">
+  <div class="navbar-inner">
+    <a href="{{ url_for('home') }}" class="nav-brand">
+      <span class="brand-icon">🌿</span>
+      <span class="brand-text">AgriTech</span>
+    </a>
+
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+
+    <div class="nav-links" id="nav-links">
+      <a href="{{ url_for('home') }}" class="nav-link {% if request.endpoint == 'home' %}active{% endif %}">Home</a>
+      <a href="{{ url_for('detect') }}" class="nav-link {% if request.endpoint == 'detect' %}active{% endif %}">Detect</a>
+      <a href="{{ url_for('dashboard') }}" class="nav-link {% if request.endpoint == 'dashboard' %}active{% endif %}">Dashboard</a>
+      <a href="{{ url_for('history') }}" class="nav-link {% if request.endpoint == 'history' %}active{% endif %}">History</a>
+      <a href="{{ url_for('feedback') }}" class="nav-link {% if request.endpoint == 'feedback' %}active{% endif %}">Feedback</a>
+      <a href="{{ url_for('about') }}" class="nav-link {% if request.endpoint == 'about' %}active{% endif %}">About</a>
+    </div>
+
+    <div class="nav-actions">
+      <select class="lang-select" id="global-lang-select" title="Select Language">
+        <option value="en">🌐 English</option>
+        <option value="hi">🇮🇳 हिन्दी</option>
+        <option value="te">🇮🇳 తెలుగు</option>
+      </select>
+
+      {% if session.get('user_name') %}
+        <span class="nav-user">👤 {{ session['user_name'] }}</span>
+        <a href="{{ url_for('logout') }}" class="btn btn-sm btn-outline">Logout</a>
+      {% else %}
+        <a href="{{ url_for('login') }}" class="btn btn-sm btn-outline">Login</a>
+        <a href="{{ url_for('signup') }}" class="btn btn-sm btn-primary-sm">Sign Up</a>
+      {% endif %}
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════════════════ FLASH MESSAGES ═══════════════════ -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <div class="flash-container">
+      {% for category, message in messages %}
+        <div class="alert alert-{{ category }}">{{ message }}</div>
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endwith %}
+
+<!-- ═══════════════════ MAIN CONTENT ═══════════════════ -->
+<main class="main-content">
+  {% block content %}{% endblock %}
+</main>
+
+<!-- ═══════════════════ FOOTER ═══════════════════ -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="brand-icon">🌿</span>
+      <strong>AgriTech</strong>
+    </div>
+    <p class="footer-tagline">AI-Powered Plant Disease Detection · Offline-First · Multilingual</p>
+    <p class="footer-note">
+      This application does not use physical environmental sensors.<br>
+      Environmental conditions are optional user-provided inputs.<br>
+      Disease detection is AI-based and not a substitute for expert agricultural advice.
+    </p>
+    <p class="footer-copy">© 2025 AgriTech. Designed for Agricultural AI Research.</p>
+  </div>
+</footer>
+
+<!-- Toast container -->
+<div id="toast-container"></div>
+
+<!-- Loading overlay -->
+<div class="loading-overlay" id="loading-overlay" style="display:none;">
+  <div class="loading-box">
+    <div class="spinner"></div>
+    <p class="loading-text" id="loading-text">Processing...</p>
+  </div>
+</div>
+
+<script src="{{ url_for('static', filename='js/app.js') }}"></script>
+<script src="{{ url_for('static', filename='js/voice.js') }}?v=2.2"></script>
+{% block extra_scripts %}{% endblock %}
+
+<script>
+  // Mobile nav toggle
+  document.getElementById('nav-toggle').addEventListener('click', function() {
+    document.getElementById('nav-links').classList.toggle('open');
+  });
+
+  // Language persistence
+  (function() {
+    const stored = localStorage.getItem('agritech_lang') || 'en';
+    const sel = document.getElementById('global-lang-select');
+    if (sel) sel.value = stored;
+  })();
+</script>
+</body>
+</html>

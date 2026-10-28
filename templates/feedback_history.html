@@ -1,0 +1,149 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<style>
+  .feedback-history-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 30px;
+  }
+
+  .feedback-table {
+    flex: 1;
+    min-width: 300px;
+    max-width: 600px;
+    margin: 10px;
+    background-color: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.15);
+  }
+
+  h2 {
+    color: #1b5e20;
+    text-align: center;
+    margin-bottom: 15px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+  }
+
+  th, td {
+    padding: 10px;
+    border: 1px solid #ccc;
+  }
+
+  th {
+    background-color: #1b5e20;
+    color: white;
+  }
+
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+
+  .star {
+    color: gold;
+  }
+
+  .analytics-box {
+    text-align: center;
+    padding: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #1b5e20;
+  }
+
+  .no-feedback {
+    color: gray;
+    text-align: center;
+    font-style: italic;
+    margin-top: 10px;
+  }
+</style>
+
+{% if total_count > 0 %}
+<div class="analytics-box">
+  🌟 Total Feedbacks: {{ total_count }} &nbsp;|&nbsp; ⭐ Average Rating: {{ avg_rating }}
+</div>
+{% endif %}
+
+<div class="feedback-history-container">
+
+  {% if session.get('user') %}
+  <div class="feedback-table">
+    <h2>👤 Your Feedback</h2>
+    {% if user_feedback %}
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Message</th>
+          <th>Rating</th>
+          <th>Time</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for fb in user_feedback %}
+        <tr>
+          <td>{{ fb.name }}</td>
+          <td>{{ fb.message }}</td>
+          <td>
+            {% if fb.rating %}
+              {% for i in range(fb.rating) %}
+                <span class="star">⭐</span>
+              {% endfor %}
+            {% else %}
+              N/A
+            {% endif %}
+          </td>
+          <td>{{ fb.timestamp or 'N/A' }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+    <p class="no-feedback">You haven't submitted any feedback yet.</p>
+    {% endif %}
+  </div>
+  {% endif %}
+
+  <div class="feedback-table">
+    <h2>🌐 Total Feedback History</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Message</th>
+          <th>Rating</th>
+          <th>Time</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for fb in all_feedback %}
+        <tr>
+          <td>{{ fb.name }}</td>
+          <td>{{ fb.message }}</td>
+          <td>
+            {% if fb.rating %}
+              {% for i in range(fb.rating) %}
+                <span class="star">⭐</span>
+              {% endfor %}
+            {% else %}
+              N/A
+            {% endif %}
+          </td>
+          <td>{{ fb.timestamp or 'N/A' }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+{% endblock %}

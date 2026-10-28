@@ -1,0 +1,21 @@
+.navbar {
+    background-color: #1b5e20;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-around;
+    padding: 15px;
+  }
+  .navbar a, .navbar button {
+    color: white;
+    padding: 10px 15px;
+    text-decoration: none;
+    font-weight: bold;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  .navbar a:hover, .navbar button:hover {
+    background-color: #2e7d32;
+    border-radius: 5px;
+  }
+  

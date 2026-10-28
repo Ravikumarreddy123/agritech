@@ -1,0 +1,205 @@
+{% extends "base.html" %}
+{% block title %}Detection History | AgriTech{% endblock %}
+{% block content %}
+
+<div class="history-page">
+  <div class="page-header">
+    <h1>📋 Detection History</h1>
+    <p>All plant disease detections recorded on this device</p>
+  </div>
+
+  {% if user_history %}
+  <div class="card history-card">
+    <div class="card-header">
+      <h2>🧑 Your Detection History</h2>
+      <span class="history-count">{{ user_history|length }} records</span>
+    </div>
+    <div class="card-body">
+      <div class="table-wrapper">
+        <table class="history-table">
+          <thead>
+            <tr>
+              <th>Image</th>
+              <th>Crop</th>
+              <th>Disease</th>
+              <th>Confidence</th>
+              <th>Risk</th>
+              <th>Mode</th>
+              <th>Time</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for item in user_history %}
+            <tr>
+              <td>
+                {% if item.image_filename %}
+                <img src="{{ url_for('static', filename='uploads/' + item.image_filename) }}"
+                     width="60" height="60" style="object-fit:cover; border-radius:6px;">
+                {% else %}
+                <span style="color:#ccc;">N/A</span>
+                {% endif %}
+              </td>
+              <td><span class="crop-badge">{{ item.crop }}</span></td>
+              <td class="disease-cell">{{ item.disease }}</td>
+              <td>{{ item.confidence }}</td>
+              <td>
+                <span class="risk-chip risk-{{ item.risk_level }}">
+                  {{ item.risk_level }}
+                </span>
+              </td>
+              <td><span class="mode-chip mode-{{ item.mode }}">{{ item.mode|upper }}</span></td>
+              <td class="time-cell">{{ item.timestamp[:16] if item.timestamp else 'N/A' }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+
+      {% if user_history and user_history[0].temperature %}
+      <details class="env-details">
+        <summary>📊 Environmental Data (click to expand)</summary>
+        <div class="table-wrapper">
+          <table class="history-table" style="margin-top:10px;">
+            <thead>
+              <tr>
+                <th>Disease</th>
+                <th>🌡️ Temp (°C)</th>
+                <th>💧 Humidity (%)</th>
+                <th>🌱 Soil Moisture (%)</th>
+                <th>🍃 Leaf Wetness (%)</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for item in user_history if item.temperature %}
+              <tr>
+                <td>{{ item.disease }}</td>
+                <td>{{ item.temperature or '—' }}</td>
+                <td>{{ item.humidity or '—' }}</td>
+                <td>{{ item.soil_moisture or '—' }}</td>
+                <td>{{ item.leaf_wetness or '—' }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </details>
+      {% endif %}
+    </div>
+  </div>
+  {% endif %}
+
+  <!-- All History -->
+  <div class="card history-card">
+    <div class="card-header">
+      <h2>🌍 All Detection History</h2>
+      <span class="history-count">{{ total_history|length }} shown</span>
+    </div>
+    <div class="card-body">
+      {% if total_history %}
+      <div class="table-wrapper">
+        <table class="history-table">
+          <thead>
+            <tr>
+              <th>Image</th>
+              <th>User</th>
+              <th>Crop</th>
+              <th>Disease</th>
+              <th>Confidence</th>
+              <th>Risk</th>
+              <th>Mode</th>
+              <th>Time</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for item in total_history %}
+            <tr>
+              <td>
+                {% if item.image_filename %}
+                <img src="{{ url_for('static', filename='uploads/' + item.image_filename) }}"
+                     width="60" height="60" style="object-fit:cover; border-radius:6px;">
+                {% else %}
+                <span style="color:#ccc;">N/A</span>
+                {% endif %}
+              </td>
+              <td>{{ item.user }}</td>
+              <td><span class="crop-badge">{{ item.crop }}</span></td>
+              <td class="disease-cell">{{ item.disease }}</td>
+              <td>{{ item.confidence }}</td>
+              <td>
+                <span class="risk-chip risk-{{ item.risk_level }}">{{ item.risk_level }}</span>
+              </td>
+              <td><span class="mode-chip mode-{{ item.mode }}">{{ item.mode|upper }}</span></td>
+              <td class="time-cell">{{ item.timestamp[:16] if item.timestamp else 'N/A' }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Pagination -->
+      {% if total_pages > 1 %}
+      <div class="pagination">
+        {% for p in range(1, total_pages + 1) %}
+          {% if p == current_page %}
+            <span class="page-current">{{ p }}</span>
+          {% else %}
+            <a href="{{ url_for('history', page=p) }}" class="page-link">{{ p }}</a>
+          {% endif %}
+        {% endfor %}
+      </div>
+      {% endif %}
+
+      {% else %}
+      <div style="text-align:center; padding:40px; color:#aaa;">
+        <div style="font-size:3rem;">🌱</div>
+        <p>No detection history available yet.</p>
+        <a href="{{ url_for('detect') }}" style="color:#2e7d32; font-weight:600;">Start detecting →</a>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<style>
+.history-page { padding: 24px; max-width: 1200px; margin: 0 auto; }
+.page-header { margin-bottom: 24px; }
+.page-header h1 { font-size: 1.8rem; color: #1b5e20; margin: 0 0 6px; }
+.page-header p { color: #666; margin: 0; }
+
+.history-card { margin-bottom: 24px; }
+.card { background: white; border-radius: 14px; box-shadow: 0 3px 16px rgba(0,0,0,0.09); overflow: hidden; }
+.card-header { background: #f8fdf8; border-bottom: 1px solid #e8f5e9; padding: 16px 20px; display: flex; align-items: center; gap: 12px; }
+.card-header h2 { font-size: 1rem; color: #1b5e20; margin: 0; flex: 1; }
+.card-body { padding: 20px; }
+.history-count { font-size: 0.82rem; background: #e8f5e9; color: #2e7d32; padding: 3px 10px; border-radius: 12px; font-weight: 600; }
+
+.table-wrapper { overflow-x: auto; }
+.history-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+.history-table th { background: #1b5e20; color: white; padding: 10px 12px; text-align: left; white-space: nowrap; }
+.history-table td { padding: 10px 12px; border-bottom: 1px solid #f5f5f5; vertical-align: middle; }
+.history-table tr:hover { background: #f9fef9; }
+
+.crop-badge { background: #e8f5e9; color: #2e7d32; padding: 3px 10px; border-radius: 10px; font-size: 0.8rem; font-weight: 600; white-space: nowrap; }
+.disease-cell { font-weight: 600; color: #333; max-width: 200px; }
+
+.risk-chip { padding: 3px 10px; border-radius: 10px; font-size: 0.78rem; font-weight: 700; white-space: nowrap; }
+.risk-HIGH { background: #ffebee; color: #c62828; }
+.risk-MEDIUM { background: #fff8e1; color: #e65100; }
+.risk-LOW { background: #e8f5e9; color: #1b5e20; }
+.risk-GENERAL { background: #e3f2fd; color: #1565c0; }
+
+.mode-chip { padding: 3px 10px; border-radius: 10px; font-size: 0.78rem; font-weight: 700; }
+.mode-offline { background: #f3e5f5; color: #7b1fa2; }
+.mode-online { background: #e3f2fd; color: #1565c0; }
+
+.time-cell { color: #888; white-space: nowrap; font-size: 0.82rem; }
+
+.pagination { display: flex; justify-content: center; gap: 8px; margin-top: 20px; flex-wrap: wrap; }
+.page-link { padding: 6px 12px; border: 1px solid #ddd; border-radius: 6px; text-decoration: none; color: #2e7d32; font-weight: 600; }
+.page-link:hover { background: #e8f5e9; }
+.page-current { padding: 6px 12px; background: #2e7d32; color: white; border-radius: 6px; font-weight: 700; }
+
+.env-details { margin-top: 20px; }
+.env-details summary { cursor: pointer; color: #1565c0; font-weight: 600; padding: 8px 0; }
+</style>
+{% endblock %}

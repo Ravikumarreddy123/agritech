@@ -1,0 +1,227 @@
+{% extends "base.html" %}
+{% block title %}AgriTech — Smart Plant Disease Detection{% endblock %}
+{% block content %}
+
+<section class="hero-section">
+  <div class="hero-content">
+    <div class="hero-badge">🤖 AI-Powered · Offline-First · Multilingual</div>
+    <h1 class="hero-title">Detect Plant Diseases<br><span class="hero-accent">Instantly with AI</span></h1>
+    <p class="hero-subtitle">
+      Upload a leaf photo and get instant AI-powered disease diagnosis with treatment advice,
+      risk estimation, and multilingual support — even without internet.
+    </p>
+    <div class="hero-actions">
+      <a href="{{ url_for('detect') }}" class="btn btn-hero">
+        🔍 Start Detecting
+      </a>
+      <a href="{{ url_for('about') }}" class="btn btn-hero-outline">
+        Learn More
+      </a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-card-float">
+      <div class="float-item">🌿 15 Disease Classes</div>
+      <div class="float-item">🌐 3 Languages</div>
+      <div class="float-item">📴 Works Offline</div>
+      <div class="float-item">🔊 Voice Advisory</div>
+    </div>
+  </div>
+</section>
+
+<!-- Features -->
+<section class="features-section">
+  <h2 class="section-title">What AgriTech Does</h2>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">🔍</div>
+      <h3>Instant Detection</h3>
+      <p>MobileNetV2 deep learning model identifies 15 plant diseases from a simple leaf photo in seconds.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📴</div>
+      <h3>Works Offline</h3>
+      <p>Core disease detection and treatment advisory work completely without internet connection.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">⚠️</div>
+      <h3>Risk Estimation</h3>
+      <p>Optionally enter environmental conditions to get an estimated disease progression risk level.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🌐</div>
+      <h3>Multilingual</h3>
+      <p>Advisory available in English, Hindi (हिन्दी), and Telugu (తెలుగు) — more languages coming soon.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🔊</div>
+      <h3>Voice Advisory</h3>
+      <p>Listen to treatment advice in your language using the device's built-in speech synthesis.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📊</div>
+      <h3>Analytics Dashboard</h3>
+      <p>Track detection history, disease trends, and confidence statistics in the dashboard.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Supported Crops -->
+<section class="crops-section">
+  <h2 class="section-title">Supported Crops</h2>
+  <div class="crops-grid">
+    <div class="crop-card">
+      <div class="crop-emoji">🌶️</div>
+      <h3>Bell Pepper</h3>
+      <ul>
+        <li>Bacterial Spot</li>
+        <li>Healthy</li>
+      </ul>
+    </div>
+    <div class="crop-card">
+      <div class="crop-emoji">🥔</div>
+      <h3>Potato</h3>
+      <ul>
+        <li>Early Blight</li>
+        <li>Late Blight</li>
+        <li>Healthy</li>
+      </ul>
+    </div>
+    <div class="crop-card">
+      <div class="crop-emoji">🍅</div>
+      <h3>Tomato</h3>
+      <ul>
+        <li>Bacterial Spot</li>
+        <li>Early Blight</li>
+        <li>Late Blight</li>
+        <li>Leaf Mold</li>
+        <li>Septoria Leaf Spot</li>
+        <li>Spider Mites</li>
+        <li>Target Spot</li>
+        <li>Yellow Leaf Curl Virus</li>
+        <li>Mosaic Virus</li>
+        <li>Healthy</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Disclaimer -->
+<section class="disclaimer-section">
+  <div class="disclaimer-card">
+    <h3>ℹ️ Important Note</h3>
+    <p>
+      This application provides <strong>AI-based disease prediction</strong> and <strong>estimated disease progression risk</strong>.
+      It does <strong>not</strong> use physical environmental sensors — environmental conditions are optional user-provided inputs.
+      Results are advisory in nature and should not replace expert agricultural consultation.
+    </p>
+  </div>
+</section>
+
+<style>
+.hero-section {
+  background: linear-gradient(135deg, #244536 0%, #315c45 48%, #52745b 100%);
+  color: white;
+  padding: 80px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+  min-height: 500px;
+}
+.hero-content { max-width: 600px; }
+.hero-badge {
+  display: inline-block;
+  background: rgba(255,255,255,0.2);
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  margin-bottom: 20px;
+  backdrop-filter: blur(4px);
+}
+.hero-title {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 800;
+  line-height: 1.15;
+  margin: 0 0 20px;
+}
+.hero-accent { color: #c5dfc5; }
+.hero-subtitle { font-size: 1.1rem; opacity: 0.9; max-width: 500px; margin-bottom: 36px; line-height: 1.6; }
+.hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+.btn-hero {
+  padding: 14px 32px; background: white; color: #244536;
+  border-radius: 8px; font-weight: 700; font-size: 1rem;
+  text-decoration: none; transition: all 0.2s;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+.btn-hero:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0,0,0,0.3); }
+.btn-hero-outline {
+  padding: 14px 32px; background: transparent; color: white;
+  border: 2px solid rgba(255,255,255,0.6); border-radius: 8px;
+  font-weight: 600; font-size: 1rem; text-decoration: none; transition: all 0.2s;
+}
+.btn-hero-outline:hover { background: rgba(255,255,255,0.1); border-color: white; }
+.hero-card-float { display: flex; flex-direction: column; gap: 12px; }
+.float-item {
+  background: rgba(255,255,255,0.15); backdrop-filter: blur(8px);
+  padding: 12px 24px; border-radius: 10px; font-weight: 600;
+  border: 1px solid rgba(255,255,255,0.3);
+  animation: floatBob 3s ease-in-out infinite;
+}
+.float-item:nth-child(2) { animation-delay: 0.5s; }
+.float-item:nth-child(3) { animation-delay: 1s; }
+.float-item:nth-child(4) { animation-delay: 1.5s; }
+@keyframes floatBob { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
+
+.features-section, .crops-section, .disclaimer-section {
+  padding: 60px 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.section-title {
+  text-align: center; font-size: 2rem; font-weight: 700;
+  color: #244536; margin-bottom: 40px;
+}
+.features-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+.feature-card {
+  background: white; border-radius: 12px; padding: 28px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08); transition: transform 0.2s, box-shadow 0.2s;
+  text-align: center;
+}
+.feature-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.12); }
+.feature-icon { font-size: 2.5rem; margin-bottom: 16px; }
+.feature-card h3 { color: #244536; margin-bottom: 10px; font-size: 1.1rem; }
+.feature-card p { color: #555; line-height: 1.6; font-size: 0.95rem; }
+
+.crops-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+}
+.crop-card {
+  background: white; border-radius: 12px; padding: 28px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08); text-align: center;
+  border-top: 4px solid #315c45;
+}
+.crop-emoji { font-size: 3rem; margin-bottom: 12px; }
+.crop-card h3 { color: #244536; margin-bottom: 12px; }
+.crop-card ul { list-style: none; padding: 0; color: #555; font-size: 0.9rem; }
+.crop-card li { padding: 4px 0; border-bottom: 1px solid #f0f0f0; }
+.crop-card li:last-child { border-bottom: none; }
+
+.disclaimer-card {
+  background: #fff8e1; border: 1px solid #ffe082; border-radius: 10px;
+  padding: 24px 30px; text-align: center;
+}
+.disclaimer-card h3 { color: #e65100; margin-bottom: 10px; }
+.disclaimer-card p { color: #5d4037; line-height: 1.7; }
+
+@media (max-width: 768px) {
+  .hero-section { padding: 50px 20px; }
+  .features-section, .crops-section, .disclaimer-section { padding: 40px 20px; }
+}
+</style>
+{% endblock %}

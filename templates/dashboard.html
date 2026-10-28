@@ -1,0 +1,291 @@
+{% extends "base.html" %}
+{% block title %}Dashboard | AgriTech{% endblock %}
+{% block content %}
+
+<div class="dashboard-page">
+
+  <!-- Header -->
+  <div class="page-header">
+    <h1>📊 Analytics Dashboard</h1>
+    <p>Disease detection insights and trends</p>
+  </div>
+
+  <!-- Summary Cards -->
+  <div class="stats-grid" id="stats-grid">
+    <div class="stat-card">
+      <div class="stat-icon">🔍</div>
+      <div class="stat-info">
+        <div class="stat-value" id="stat-total">—</div>
+        <div class="stat-label">Total Detections</div>
+      </div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon">🎯</div>
+      <div class="stat-info">
+        <div class="stat-value" id="stat-confidence">—</div>
+        <div class="stat-label">Avg. Confidence</div>
+      </div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon">🏆</div>
+      <div class="stat-info">
+        <div class="stat-value stat-disease" id="stat-most-common">—</div>
+        <div class="stat-label">Most Detected Disease</div>
+      </div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon">⚠️</div>
+      <div class="stat-info">
+        <div class="stat-value" id="stat-high-risk">—</div>
+        <div class="stat-label">High Risk Detections</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Recent Detections -->
+  <div class="card dashboard-card">
+    <div class="card-header">
+      <h2>🕐 Recent Detections</h2>
+    </div>
+    <div class="card-body" id="recent-detections">
+      <p style="color:#aaa; text-align:center;">Loading...</p>
+    </div>
+  </div>
+
+  <!-- Charts Row -->
+  <div class="charts-row">
+    <div class="card dashboard-card">
+      <div class="card-header"><h2>🌍 Disease Distribution (All Users)</h2></div>
+      <div class="card-body">
+        <div class="chart-container">
+          <canvas id="barChartTotal"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <div class="card dashboard-card">
+      <div class="card-header"><h2>🥧 Disease Breakdown</h2></div>
+      <div class="card-body">
+        <div class="chart-container">
+          <canvas id="pieChartTotal"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Risk Distribution Chart -->
+  <div class="card dashboard-card">
+    <div class="card-header"><h2>⚠️ Risk Level Distribution</h2></div>
+    <div class="card-body">
+      <div class="chart-container-sm">
+        <canvas id="riskChart"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <!-- User personal charts -->
+  {% if session.get("user_email") %}
+  <div class="charts-row">
+    <div class="card dashboard-card">
+      <div class="card-header"><h2>🙋 Your Detection History</h2></div>
+      <div class="card-body">
+        <div class="chart-container">
+          <canvas id="barChartUser"></canvas>
+        </div>
+      </div>
+    </div>
+    <div class="card dashboard-card">
+      <div class="card-header"><h2>🥧 Your Disease Breakdown</h2></div>
+      <div class="card-body">
+        <div class="chart-container">
+          <canvas id="pieChartUser"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+
+  <!-- No data message (hidden by default, shown via JS) -->
+  <div class="no-data-box" id="no-data-box" style="display:none;">
+    <div style="font-size:3rem;">🌱</div>
+    <h3>No Detection History Available</h3>
+    <p>Start detecting plant diseases to see analytics here.</p>
+    <a href="{{ url_for('detect') }}" class="btn-go-detect">Go to Detect</a>
+  </div>
+
+</div>
+
+<style>
+.dashboard-page { padding: 24px; max-width: 1200px; margin: 0 auto; }
+.page-header { margin-bottom: 24px; }
+.page-header h1 { font-size: 1.8rem; color: #1b5e20; margin: 0 0 6px; }
+.page-header p { color: #666; margin: 0; }
+
+.stats-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px; margin-bottom: 24px;
+}
+.stat-card {
+  background: white; border-radius: 12px; padding: 20px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08); display: flex; gap: 16px; align-items: center;
+  border-left: 4px solid #2e7d32; transition: transform 0.2s;
+}
+.stat-card:hover { transform: translateY(-2px); }
+.stat-icon { font-size: 2rem; }
+.stat-value { font-size: 1.6rem; font-weight: 800; color: #1b5e20; }
+.stat-disease { font-size: 0.95rem; font-weight: 700; }
+.stat-label { font-size: 0.82rem; color: #888; margin-top: 2px; }
+
+.charts-row {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;
+}
+@media (max-width: 768px) { .charts-row { grid-template-columns: 1fr; } }
+
+.dashboard-card { margin-bottom: 20px; }
+.card { background: white; border-radius: 14px; box-shadow: 0 3px 16px rgba(0,0,0,0.09); overflow: hidden; }
+.card-header { background: #f8fdf8; border-bottom: 1px solid #e8f5e9; padding: 16px 20px; }
+.card-header h2 { font-size: 1rem; color: #1b5e20; margin: 0; }
+.card-body { padding: 20px; }
+.chart-container { height: 280px; }
+.chart-container-sm { height: 200px; }
+
+.recent-item {
+  display: flex; align-items: center; gap: 12px; padding: 10px 0;
+  border-bottom: 1px solid #f5f5f5;
+}
+.recent-item:last-child { border-bottom: none; }
+.recent-disease { font-weight: 600; color: #1b5e20; flex: 1; }
+.recent-crop { font-size: 0.82rem; color: #888; }
+.recent-conf { font-size: 0.85rem; background: #e8f5e9; color: #2e7d32; padding: 2px 8px; border-radius: 10px; }
+.recent-time { font-size: 0.78rem; color: #bbb; }
+.risk-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+.risk-dot.HIGH { background: #f44336; }
+.risk-dot.MEDIUM { background: #ff8f00; }
+.risk-dot.LOW { background: #4caf50; }
+.risk-dot.GENERAL { background: #1976d2; }
+
+.no-data-box { text-align: center; padding: 60px 20px; color: #aaa; }
+.no-data-box h3 { color: #666; }
+.btn-go-detect {
+  display: inline-block; margin-top: 16px; padding: 12px 24px;
+  background: #2e7d32; color: white; border-radius: 8px; text-decoration: none; font-weight: 600;
+}
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+const CHART_COLORS = [
+  '#2e7d32','#388e3c','#43a047','#4caf50','#66bb6a',
+  '#81c784','#a5d6a7','#1b5e20','#558b2f','#33691e'
+];
+
+fetch('/api/history')
+  .then(r => r.json())
+  .then(data => {
+    const stats = data.stats || {};
+    const total = data.total || [];
+    const user = data.user || [];
+
+    // Summary cards
+    document.getElementById('stat-total').textContent = stats.total_detections || 0;
+    document.getElementById('stat-confidence').textContent = (stats.avg_confidence || 0) + '%';
+    document.getElementById('stat-most-common').textContent = stats.most_common || 'N/A';
+
+    const riskDist = stats.risk_distribution || {};
+    document.getElementById('stat-high-risk').textContent = riskDist['HIGH'] || 0;
+
+    // Recent detections
+    const recentBox = document.getElementById('recent-detections');
+    const recent = stats.recent || [];
+    if (recent.length === 0) {
+      recentBox.innerHTML = '<p style="color:#aaa;text-align:center;">No detections yet.</p>';
+    } else {
+      recentBox.innerHTML = recent.map(r => `
+        <div class="recent-item">
+          <div class="risk-dot ${r.risk_level || 'GENERAL'}"></div>
+          <div style="flex:1">
+            <div class="recent-disease">${r.disease}</div>
+            <div class="recent-crop">${r.crop || ''}</div>
+          </div>
+          <span class="recent-conf">${r.confidence}</span>
+          <span class="recent-time">${(r.timestamp||'').slice(0,16)}</span>
+        </div>
+      `).join('');
+    }
+
+    if (total.length === 0) {
+      document.getElementById('no-data-box').style.display = 'block';
+      return;
+    }
+
+    // Total bar chart
+    const totalLabels = total.map(d => d.disease);
+    const totalCounts = total.map(d => d.count);
+
+    new Chart(document.getElementById('barChartTotal'), {
+      type: 'bar',
+      data: {
+        labels: totalLabels,
+        datasets: [{
+          label: 'Detections', data: totalCounts,
+          backgroundColor: CHART_COLORS.slice(0, totalLabels.length)
+        }]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: { y: { beginAtZero: true } }
+      }
+    });
+
+    // Total pie chart
+    new Chart(document.getElementById('pieChartTotal'), {
+      type: 'doughnut',
+      data: {
+        labels: totalLabels,
+        datasets: [{ data: totalCounts, backgroundColor: CHART_COLORS }]
+      },
+      options: { responsive: true, maintainAspectRatio: false }
+    });
+
+    // Risk chart
+    const riskLabels = Object.keys(riskDist);
+    const riskCounts = Object.values(riskDist);
+    const riskColors = riskLabels.map(l => ({HIGH:'#f44336',MEDIUM:'#ff8f00',LOW:'#4caf50',GENERAL:'#1976d2'}[l]||'#aaa'));
+    if (riskLabels.length > 0) {
+      new Chart(document.getElementById('riskChart'), {
+        type: 'bar',
+        data: {
+          labels: riskLabels,
+          datasets: [{ label: 'Risk Count', data: riskCounts, backgroundColor: riskColors }]
+        },
+        options: {
+          responsive: true, maintainAspectRatio: false,
+          plugins: { legend: { display: false } },
+          scales: { y: { beginAtZero: true } }
+        }
+      });
+    }
+
+    // User charts
+    if (user.length > 0 && document.getElementById('barChartUser')) {
+      const userLabels = user.map(d => d.disease);
+      const userCounts = user.map(d => d.count);
+      new Chart(document.getElementById('barChartUser'), {
+        type: 'bar',
+        data: { labels: userLabels, datasets: [{ label: 'Your Detections', data: userCounts, backgroundColor: '#43a047' }] },
+        options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true } } }
+      });
+      new Chart(document.getElementById('pieChartUser'), {
+        type: 'doughnut',
+        data: { labels: userLabels, datasets: [{ data: userCounts, backgroundColor: CHART_COLORS }] },
+        options: { responsive: true, maintainAspectRatio: false }
+      });
+    }
+  })
+  .catch(e => {
+    console.error(e);
+    document.getElementById('no-data-box').style.display = 'block';
+  });
+</script>
+{% endblock %}
